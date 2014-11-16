@@ -1,0 +1,27 @@
+== README
+
+How should this work?
+
+The end goal:
+
+An app that can:
+
+1) Fetch models from google warehouse by URL or identifier
+	- Side goals:
+	- Add more warehouse functionality, like search, through the app interface
+	- Add support for other sites
+	- Add site agnostic support for appropriately formatted files
+2) Convert KMZ files to DAE resources
+	- add support for other file formats
+	- work on warehaus gem to make it more abstract and less brittle
+3) Convert DAE resources to three.js files
+	- find some way to do this without python or blender :S
+4) Store model data offsite, reference resources in the DB
+5) Provide support for collecting models into 'scenes' with three.js settings baked in
+4) Provide a front end for fetching models
+5) Provide a front end for viewing models in 3d
+6) Provide a front end for making scenes of models
+	- wizards for building different types of scenes
+	- tools for controlling lighting and camera
+	- animation maybe?
+7) Provide a way to output usable files for 3d printing
