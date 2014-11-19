@@ -1,0 +1,23 @@
+{{#with nav}}
+	<nav class="main-nav" role="navigation">
+		<div class="nav-handle"></div>
+			<ul class="nav-menu">
+				{{#each links}}
+					<li class="nav-link">
+						<a href="{{path}}">{{text}}</a>
+					</li>
+				{{/each}}
+				{{#each nav_sections}}
+					<li class="nav-section">
+						<span class="nav-section-title">{{title}}</span>
+						{{#each links}}
+							<li class="nav-link">
+								<a href="{{path}}">{{text}}</a>
+							</li>
+						{{/each}}
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+	</nav>
+{{/with}}

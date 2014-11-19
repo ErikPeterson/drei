@@ -1,0 +1,53 @@
+header{
+	box-sizing: border-box;
+	width: 100%;
+	height: 36px;
+	background-color: #4A4A4A;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 18px 0 0 0;
+	padding: 0;
+	color: white;
+	overflow: visible;
+	z-index: 100;
+
+	> .title{
+		float: left;
+		height: 24px;
+		width: 41px;
+		background-image: url(image_path('logo-small.png'));
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		margin: 8px 0 0 12px;
+		padding: 0;
+		h1{
+			display: none;
+		}
+	}
+
+	> nav.main-nav{
+		position: fixed;
+		right: 0px;
+		top: 18px;
+		overflow: visible;
+		height: 36px;
+		width: 36px;
+		margin-right: 12px;
+
+		> .nav-menu{
+			display: none;
+		}
+
+		> .nav-handle{
+			display: block;
+			width: 40px;
+			height: 54px;
+			margin-top: -10px;
+			background-image: url(image_path('drei-logo-small.png'));
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			cursor: pointer;
+		}
+	}
+}
