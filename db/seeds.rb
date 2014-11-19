@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 [
-'u10261d5f-9e52-4b13-b80d-6263c66396c8',
-'d7d5556f4ea5bb9251990397636975f',
-'f30a8d5dcaf895eb9d2ae525b1212ae1',
-'e4f25e864d558ea4e52f21563f95df48'
+'bf819621e74b0519b79e99a4e49de900',
+'bb5c23c0e72e1745719b4a60dd8a29a',
+'f7ce3523dccd929312e36e1b4554403',
+'2a7d62b731a04f5fa54b9afa882a89ed'
 ].each do |uri|
 	ThreeObject.from_url(uri)
 end

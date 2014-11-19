@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   get 'objects/:slug_or_id' => 'three_object#show', as: :three_object
+  get 'nav-data' => 'home#nav_data'
   get '*foo' => 'home#show'
 end

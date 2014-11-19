@@ -11,7 +11,7 @@ module.exports = function(Backbone, Drei){
             'click a':'handleLink'
         },
         initialize: function(){
-            this.$parent = (this.parent_el ? $(this.parent_el) : $body);
+            this.$parent = (this.attributes.parent_el ? $(this.attributes.parent_el) : $body);
             this.listenToOnce(this.model, 'sync', this.initRender);
         },
         initRender: function(){

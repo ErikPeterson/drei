@@ -4,17 +4,21 @@ var THREE = require('three');
 var RenderMachine = require('render-machine-3js');
 
 module.exports = function(Backbone, Drei){
+    
     var $ = Backbone.$;
     var $body = $('body');
+
     var SingleThreeDeeObjectView = Backbone.View.extend({
+    
         tagName: "div",
         className: "three-scene",
+    
         events: {
             'click a':'handleLink',
             'dblclick .three-single-canvas': 'clickZoom'
         },
         initialize: function(){
-            this.$parent = (this.parent_el ? $(this.parent_el) : $body);
+            this.$parent = (this.attributes.parent_el ? $(this.attributes.parent_el) : $body);
             this.listenToOnce(this.model, 'sync', this.initRender);
         },
         initRender: function(){
@@ -97,7 +101,7 @@ module.exports = function(Backbone, Drei){
             var model = new THREE.Object3D();
 
             model.add(mesh);
-            model.scale.set(scale,scale,scale)
+            model.scale.set(scale,scale,scale);
             return model;
         },
         render: function(){
@@ -137,19 +141,19 @@ module.exports = function(Backbone, Drei){
         },
         turnLeft: function(){
             this.turning_left = true;
-            this.three_model.rotation.y -= 0.05
+            this.three_model.rotation.y -= 0.05;
         },
         turnRight: function(){
             this.turning_right = true;
-            this.three_model.rotation.y += 0.05
+            this.three_model.rotation.y += 0.05;
         },
         turnTop: function(){
             this.turning_top = true;
-            this.three_model.rotation.x -= 0.05
+            this.three_model.rotation.x -= 0.05;
         },
         turnBottom: function(){
             this.turning_bottom = true;
-            this.three_model.rotation.x += 0.05
+            this.three_model.rotation.x += 0.05;
         },
         startTurn: function(dircode){
 
@@ -195,7 +199,7 @@ module.exports = function(Backbone, Drei){
                     break;
             }
 
-            this.rm.off('beforeRender', turnFunction)
+            this.rm.off('beforeRender', turnFunction);
         },
         startPan: function(dircode){
             var panFunction = false;
@@ -240,7 +244,7 @@ module.exports = function(Backbone, Drei){
                     break;
             }
 
-            this.rm.off('beforeRender', panFunction)
+            this.rm.off('beforeRender', panFunction);
         },
         panLeft: function(){
             this.panning_left = true;

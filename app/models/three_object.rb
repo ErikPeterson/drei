@@ -62,9 +62,13 @@ class ThreeObject < ActiveRecord::Base
 		prefix + bucket_name + folder + filename
 	end
 
+	def tag_names
+		self.tags.collect(&:name)
+	end
+
 
 	def as_json(options={})
-    	super(options.merge(:methods => [:asset_path, :json_path]) )
+    	super(options.merge(:methods => [:asset_path, :json_path, :tag_names]) )
   	end
 
 	def self.get_unique_slug(input)

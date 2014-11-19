@@ -19,6 +19,7 @@ gulp.task('browserify', function(){
     return gulp.src(dir_path + '/app/app.js')
             .pipe(browserify({
                     debug: true,
+                    transform: ['brfs']
                 }))
             .pipe(gulp.dest(dir_path + '../'));
 });
