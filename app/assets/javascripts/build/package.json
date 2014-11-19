@@ -1,0 +1,23 @@
+{
+  "name": "drei-build",
+  "version": "0.0.1",
+  "description": "JS App and builder for drei",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Erik Sälgström Peterson <eriksalgstrom@gmail.com> (http://eriksalgstrompeterson.com/)",
+  "license": "ISC",
+  "devDependencies": {
+    "backbone": "^1.1.2",
+    "domready": "^1.0.7",
+    "gulp": "^3.8.10",
+    "gulp-browserify": "^0.5.0",
+    "gulp-jshint": "^1.9.0",
+    "handlebars": "^2.0.0",
+    "jquery-untouched": "^1.10.2",
+    "jshint-stylish": "^1.0.0",
+    "render-machine-3js": "^0.1.1",
+    "three": "^0.66.26"
+  }
+}

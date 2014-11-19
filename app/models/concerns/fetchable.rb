@@ -9,18 +9,27 @@ module Fetchable
 	end
 
 	module ClassMethods
+
+		def get_meta_data(uri)
+			connection = Warehaus::Getter.new(uri)
+			entity = connection.fetch_entity
+			meta_data = parse_meta_data(entity)
+		end
+
 	
 		def unbox(uri, root_path, name)
 			connection = Warehaus::Getter.new(uri, root_path, name)
-			begin
+
+			begin	
 				entity = connection.fetch_entity
 				meta_data = parse_meta_data(entity)
 				tmp_path = connection.unbox
 			rescue Exception => e
+			binding.pry
 				return false;
 			end	
-
 			return false unless tmp_path 
+				
 
 			success = system("#{Rails.application.secrets.blender_path} -b #{Rails.application.secrets.blender_dummy_path} -P #{Rails.application.secrets.dae_to_json_path} -- #{tmp_path}/#{name}.dae")
 			return false unless success
@@ -28,9 +37,12 @@ module Fetchable
 			begin
 				upload_assets(tmp_path, name)
 			rescue Exception => e
+				binding.pry
 				return false
 			end
-				
+
+			connection.cleanup
+
 			{:asset_key => name, :meta_data => meta_data}
 		end
 
@@ -38,7 +50,7 @@ module Fetchable
 			@s3 ||= AWS::S3.new
 			bucket = @s3.buckets[Rails.application.secrets[:aws_bucket]]
 			upload_textures(root_path, name, bucket)
-			upload_json(root_path, name, images, bucket)
+			upload_json(root_path, name, bucket)
 		end
 
 		def upload_textures(root_path, name, bucket)
@@ -50,25 +62,23 @@ module Fetchable
 					aws_key = name + "/assets/" + path.split('/').last
 					obj = bucket.objects[aws_key]
 					obj.write(file)
-					url = obj.public_url
 				end
 			end
 
 		end
 
-		def upload_json(root_path, name, images, bucket)
-			binding.pry
+		def upload_json(root_path, name, bucket)
 			File.open(root_path + "/#{name}.js") do |file|
-				text = file.read
-				new_text = swap_files(text, images)
-				aws_key = name + "/#{model}.js"
+				aws_key = name + "/#{name}.js"
+				obj = bucket.objects[aws_key]
+				obj.write(file)
 			end
 		end
 
 		def parse_meta_data(data)
-			meta_data = {:title => data[:title], :tags=> data[:tags], :description => data[:description]}
+			meta_data = {:id=> data[:id],:title => data[:title], :tags=> data[:tags], :description => data[:description]}
 			if data.keys.include?(:binaries) && data[:binaries].keys.include?(:bot_lt)
-				meta_data[:illustration_url] = data[:binaries][:bot_lt][:content_url]
+				meta_data[:illustration_url] = data[:binaries][:bot_lt][:contentUrl]
 			end
 			meta_data
 		end

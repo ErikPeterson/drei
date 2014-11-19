@@ -1,10 +1,14 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 
+# Use sass rails
+gem 'sass-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use postgres, duh
 gem 'pg','~> 0.17.1'
+
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -16,7 +20,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Use warehaus for fetching DAE resources
-gem 'warehaus', :github=> 'warehaus', :branch=> 'master'
+gem 'warehaus'
 
 # Use AWS for asset storage
 gem 'aws-sdk', '<2'
@@ -27,7 +31,6 @@ gem 'slugify'
 gem 'pry', group: [:development, :test]
 gem 'rspec-rails', group: [:development, :test]
 gem 'database_cleaner', group: :test
-gem 'webmock', '~>1.19.0', group: :test
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
